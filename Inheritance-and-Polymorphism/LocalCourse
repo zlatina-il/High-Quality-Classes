@@ -1,0 +1,83 @@
+// ********************************
+// <copyright file="LocalCourse.cs" company="Telerik Academy">
+// Copyright (c) 2013 Telerik Academy. All rights reserved.
+// </copyright>
+// ********************************
+namespace InheritanceAndPolymorphism
+{
+    using System.Collections.Generic;
+    using System.Text;
+
+    /// <summary>
+    /// Represents the local course
+    /// </summary>
+    public class LocalCourse : Course
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LocalCourse"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        public LocalCourse(string name)
+            : this(name, null)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LocalCourse"/> class.
+        /// </summary>
+        /// <param name="courseName">The course name.</param>
+        /// <param name="teacherName">The teacher name.</param>
+        public LocalCourse(string courseName, string teacherName)
+            : this(courseName, teacherName, null)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LocalCourse"/> class.
+        /// </summary>
+        /// <param name="courseName">The course name.</param>
+        /// <param name="teacherName">The teacher name.</param>
+        /// <param name="students">The students.</param>
+        public LocalCourse(string courseName, string teacherName, IList<string> students)
+            : this(courseName, teacherName, students, null)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LocalCourse"/> class.
+        /// </summary>
+        /// <param name="courseName">The course name.</param>
+        /// <param name="teacherName">The teacher name.</param>
+        /// <param name="students">The students.</param>
+        /// <param name="lab">The lab.</param>
+        public LocalCourse(string courseName, string teacherName, IList<string> students, string lab)
+            : base(courseName, teacherName, students)
+        {
+            this.Lab = lab;
+        }
+
+        /// <summary>
+        /// Gets or sets the lab.
+        /// </summary>
+        public string Lab { get; set; }
+
+        /// <summary>
+        /// The to string.
+        /// </summary>
+        /// <returns>The <see cref="string"/>.</returns>
+        public override string ToString()
+        {
+            var result = new StringBuilder();
+
+            result.AppendFormat("Local{0}", base.ToString());
+            if (this.Lab != null)
+            {
+                result.Append("; Lab = ");
+                result.Append(this.Lab);
+            }
+
+            result.Append(" }");
+            return result.ToString();
+        }
+    }
+}
